@@ -9,8 +9,18 @@
 |------------|---------|--------|----------|------------|--------|--------|
 | AUTH-01 | Sign-Up page (EN + FA, field states) | partial | P0 | — | AUTH-02 | — |
 
-> AUTH-01 partial: EN page done (TASK-AUTH-01-01, PASS 2026-09-07); FA (TASK-AUTH-01-02) + states (TASK-AUTH-01-03) open.
-| AUTH-02 | Sign-In page (EN + FA, active/inactive states) | todo | P0 | — | AUTH-01 | — |
+> AUTH-01 partial: EN page done (TASK-AUTH-01-01, PASS 2026-09-07); FA (TASK-AUTH-01-02, PASS 2026-09-07) + states (TASK-AUTH-01-03) open.
+| AUTH-02 | Sign-In page (EN + FA, active/inactive states) | partial | P0 | — | AUTH-01 | — |
+
+> AUTH-02 partial: EN (TASK-AUTH-02-01, PASS 2026-09-08) + FA (TASK-AUTH-02-02, PASS 2026-09-08) done; states (TASK-AUTH-02-03) open.
+
+### Accepted deliverables (done via TASK-AUTH-02-01 / TASK-AUTH-02-02)
+- EN Sign-In page implemented + committed; headless diff vs `Sign In (EN) Active.png` = 2.90% / MAE 1.26.
+- FA Sign-In page implemented + committed; headless diff vs `Sign In (FA) Active.png` = 1.42% / MAE 0.89.
+
+### Acceptance (merge target for future **Done via TASK-AUTH-02-01** / **Done via TASK-AUTH-02-02** rows)
+- EN + FA Sign-In pages done; states task `TASK-AUTH-02-03` open.
+
 
 **Screen map (Observed, BRIEF-002):** Figma frames `Sign Up 1–4` (on pages `(Inactive)` and `(Active)`) = 1 EN Sign-Up, 2 FA Sign-Up, **3 EN Sign-In, 4 FA Sign-In**. `docs/figma/` now holds explicit Sign-In exports.
 
@@ -39,6 +49,9 @@
 - Active-state variants per `docs/figma/Sign In (EN) Active.png` / `Sign In (FA) Active.png`.
 - Heading `Sign In` / «ورود به اکانت», SSO `Sign In With Google/Facebook`, `- OR -`, fields `Email Address`/`Password` (no Full Name), button `Sign in`, footer `No Account? Create One!` / «حساب کاربری ندارید؟ بسازید».
 - Plain HTML/CSS/JS (R3).
+
+- **Done via TASK-AUTH-02-01:** EN Sign-In page implemented (Active look), committed in HEAD 264be25; headless diff vs `Sign In (EN) Active.png` = 2.90% / MAE 1.26 (below 3% bar).
+- **Done via TASK-AUTH-02-02:** FA Sign-In page implemented (Active look); headless diff vs `Sign In (FA) Active.png` = 1.42% / MAE 0.89 (below 3% bar).
 
 ### Links
 - Design refs: `docs/figma/Sign In (EN).png`, `docs/figma/Sign In (FA).png`, `docs/figma/Sign In (EN) Active.png`, `docs/figma/Sign In (FA) Active.png`; Figma file URL in `docs/dev-pipeline/phases/PH-01-mvp/briefs/BRIEF-001.md`
