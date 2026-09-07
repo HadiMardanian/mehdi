@@ -1,0 +1,212 @@
+/* TASK-AUTH-01-02 · FA Sign-Up page (Active look; frame 61:143, page "Sign Up (Active)")
+   — horizontal mirror of the EN page; target = user export docs/figma/Sign Up 2.png.
+   Canvas-local coordinates: card spans x=-53..732; form column x=135..562; brand on the right.
+   Persian glyphs: self-hosted Vazirmatn (OFL) after the Latin 'PP Telegraf' (Urbanist) face. */
+
+/* Persian font (Latin chars still fall through to the Urbanist-backed "PP Telegraf") */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/vazirmatn.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+body.fa-stage, .fa-stage {
+  font-family: "PP Telegraf", "Vazirmatn", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.fa-stage { direction: rtl; }
+
+/* Right brand panel (mirror: EN was left:25). The FA design mirrors the whole frame,
+   so the logo artwork itself is flipped too — flip it back to match. */
+.fa-logo {
+  position: absolute; right: 25px; top: 20px; width: 48px; height: 48px;
+  transform: scaleX(-1);
+}
+
+.fa-tagline {
+  position: absolute;
+  right: 25px; top: 104px;
+  width: 316px;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+/* Card on the left, its left edge off-canvas → rounded corners are on the right */
+.fa-card {
+  position: absolute;
+  left: -53px; top: 0;
+  width: 785px; height: 700px;
+  background: var(--card-bg);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+/* Language selector (فارسی (FA)) — top-left (card-local: stage x 26 + card offset 53) */
+.fa-lang { position: absolute; left: 79px; top: 15px; width: 109px; height: 35px; }
+.fa-lang-text {
+  position: absolute;
+  left: 32px; top: 0; width: 64px; height: 35px;
+  display: flex; align-items: center;
+  font-size: 14px; color: var(--muted-3);
+}
+.fa-lang-chevron { position: absolute; left: 8px; top: 15px; width: 8px; height: 4px; }
+
+/* Heading — right edge flush with the form column right edge (x=562) */
+.fa-heading {
+  position: absolute;
+  left: 497px; top: 104px; /* card-local for stage x 444 (flush right at stage x 562) */
+  width: 118px; height: 35px;
+  margin: 0;
+  font-size: 24px; font-weight: 800;
+  color: var(--heading);
+  line-height: 35px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* SSO buttons (mirror order: Facebook left, Google right) — Active look: row at y 164 */
+.fa-sso {
+  position: absolute;
+  top: 164px;
+  width: 188px; height: 45px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font: inherit;
+}
+.fa-sso-facebook { left: 188px; } /* card-local: stage 135 / 374 */
+.fa-sso-google   { left: 427px; }
+.fa-sso-icon { position: absolute; top: 12px; width: 22px; height: 22px; }
+.fa-sso-facebook .fa-sso-icon { left: 150px; }
+.fa-sso-google   .fa-sso-icon { left: 139px; }
+.fa-sso-label {
+  position: absolute; top: 5px; bottom: 5px;
+  display: flex; align-items: center;
+  font-size: 12px; font-weight: 400;
+  color: var(--sso-text);
+  white-space: nowrap;
+}
+.fa-sso-facebook .fa-sso-label { left: 16px; width: 124px; }
+.fa-sso-google   .fa-sso-label { left: 27px; width: 97px; }
+
+/* Separator */
+.fa-or {
+  position: absolute;
+  left: 188px; top: 234px; /* card-local: stage x 135 */
+  width: 427px; height: 35px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 400;
+  color: var(--muted-2);
+}
+
+/* Form rows — Active look: rounded-cap bordered field boxes. Form top = y 294 (stage).
+   Field boxes Full Name / Email / Password at stage y 294 / 372 / 450 (78px apart, 53px tall).
+   Icons mirrored to the right (icon boxes at stage x 527/526), eye to the left. */
+.fa-form { position: absolute; left: 188px; top: 294px; width: 427px; } /* card-local: stage x 135 */
+
+.fa-field {
+  position: relative;
+  display: block;
+  width: 427px; height: 53px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 26px; /* rounded end caps only */
+  transition: border-color .18s ease;
+}
+.fa-field + .fa-field { margin-top: 25px; } /* rows 78px apart top-to-top */
+
+/* FA field states (mirror of EN) — full box chrome reacts: hover #515151, active #426bff */
+.fa-field:hover { border: 1px solid #515151; }
+.fa-field.active { border: 1px solid #426bff; }
+
+/* FA floating label — mirrored to the right (text-align right, icons on the right).
+   Default window matches .fa-input (full width, text ends at x=390 / stage 525). */
+.fa-form .field-label {
+  left: 0; top: 16px; right: 0;
+  height: 22px; line-height: 22px;
+  text-align: right;
+  padding-right: 37px;
+}
+.fa-field.active .field-label,
+.fa-field.has-value .field-label {
+  top: -8px; height: 12px; line-height: 12px;
+  font-size: 12px; font-weight: 700;
+  color: #426bff;
+  text-align: right;
+  padding-right: 37px;
+}
+
+/* FA caret — mirrored to the right (text start is at the right edge) */
+.fa-field .field-caret { left: auto; right: 38px; }
+.fa-field.active:not(.has-value) .field-caret { display: block; }
+.fa-field.active:not(.has-value) .fa-input { caret-color: transparent; }
+
+.fa-input {
+  position: absolute;
+  left: 0; top: 16px; right: 0;
+  height: 22px;
+  border: 0; outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--heading);
+  text-align: right;
+  padding: 0 37px 0 0; /* reserves the icon strip (placeholder glyphs end at x=525) */
+}
+.fa-input::placeholder { color: var(--muted); }
+.fa-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.fa-field-icon { position: absolute; display: block; pointer-events: none; }
+.i-account { left: 392px; top: 17px; width: 22px; height: 22px; }
+.i-mail    { left: 392px; top: 20px; width: 22px; height: 22px; }
+.i-key     { left: 391px; top: 22px; width: 22px; height: 22px; }
+/* Eye toggle (button) — mirrored to the left of the field; ''eye'' base styles come
+   from styles.css; this rule overrides its position and resets the button. */
+.fa-eye {
+  position: absolute;
+  left: 21px; top: 18px;
+  width: 32px; height: 18px;
+  border: 0; padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Primary CTA — inside .fa-form (form at card y 294 / x 135), so offsets are form-local */
+.fa-cta {
+  position: absolute;
+  left: 0; top: 234px; /* card-local x 135, y 528 */
+  width: 427px; height: 45px;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #ffffff;
+  font: inherit;
+  font-size: 16px; font-weight: 800;
+  cursor: pointer;
+}
+
+/* Footer link to sign-in — form-local (x unchanged, y 598) */
+.fa-footer {
+  position: absolute;
+  left: 183px; top: 304px;
+  width: 234px; height: 35px;
+  display: flex; align-items: center; justify-content: flex-start; /* RTL: main-start = right */
+  font-size: 16px; font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.fa-footer a { color: var(--muted); text-decoration: none; }
+.fa-footer a:hover { color: var(--heading); }
+
+/* Left illustration overlaps the card's right edge (design paints it above the card) */
+.fa-illustration {
+  position: absolute;
+  left: 634px; top: 181px;
+  width: 493px; height: 542px;
+  pointer-events: none;
+  transform: scaleX(-1); /* the FA mirror flips the artwork — verified 0.04% zone diff vs frame render */
+  transform-origin: center;
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ایجاد اکانت · project1</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/fa.css">
+</head>
+<body>
+  <!-- TASK-AUTH-01-02 · Sign-Up page, Persian (FA) variant — Active look.
+       Target = user export docs/figma/Sign Up 2.png (Figma page "Sign Up (Active)", frame 61:143). -->
+  <main class="stage fa-stage" aria-label="ایجاد اکانت">
+
+    <!-- Right brand panel (teal) — mirrored to the right side -->
+    <img class="fa-logo" src="assets/logo.png" alt="" width="48" height="48">
+    <p class="fa-tagline">اشیاء سه بعدی، مک کاپ و تصویر را در اینجا بیابید.</p>
+
+    <!-- Left card (mirrored: card sits on the LEFT, rounded on the right) -->
+    <section class="fa-card" aria-label="فرم ثبت نام">
+
+      <div class="fa-lang">
+        <span class="fa-lang-text">فارسی (FA)</span>
+        <img class="fa-lang-chevron" src="assets/chevron.png" alt="" width="8" height="4">
+      </div>
+
+      <h1 class="fa-heading">ایجاد اکانت</h1>
+
+      <button type="button" class="fa-sso fa-sso-facebook">
+        <img class="fa-sso-icon" src="assets/icon-facebook.png" alt="" width="22" height="22">
+        <span class="fa-sso-label">ثبت نام با حساب فیسبوک</span>
+      </button>
+      <button type="button" class="fa-sso fa-sso-google">
+        <img class="fa-sso-icon" src="assets/icon-google.png" alt="" width="22" height="22">
+        <span class="fa-sso-label">ثبت نام با حساب گوگل</span>
+      </button>
+
+      <p class="fa-or" aria-hidden="true">- یا -</p>
+
+      <form class="fa-form" novalidate>
+
+        <div class="fa-field" data-field>
+          <img class="fa-field-icon i-account" src="assets/chip-account.png" alt="" aria-hidden="true">
+          <label class="field-label" for="fullname">نام خانوادگی</label>
+          <input class="fa-input" id="fullname" type="text" name="fullname" autocomplete="name">
+          <span class="field-caret" aria-hidden="true"></span>
+        </div>
+
+        <div class="fa-field" data-field>
+          <img class="fa-field-icon i-mail" src="assets/chip-mail.png" alt="" aria-hidden="true">
+          <label class="field-label" for="email">آدرس ایمیل</label>
+          <input class="fa-input" id="email" type="email" name="email" autocomplete="email" inputmode="email">
+          <span class="field-caret" aria-hidden="true"></span>
+        </div>
+
+        <div class="fa-field" data-field>
+          <img class="fa-field-icon i-key" src="assets/chip-key.png" alt="" aria-hidden="true">
+          <label class="field-label" for="password">رمز عبور</label>
+          <input class="fa-input" id="password" type="password" name="password" autocomplete="new-password">
+          <button type="button" class="eye fa-eye" data-eye aria-label="نمایش رمز عبور" aria-pressed="false"></button>
+          <span class="field-caret" aria-hidden="true"></span>
+        </div>
+
+        <button type="submit" class="fa-cta">ایجاد اکانت</button>
+
+        <p class="fa-footer">از قبل حساب کاربری دارید؟ <a href="signin-fa.html">وارد شوید</a></p>
+
+      </form>
+    </section>
+
+    <!-- Left illustration overlaps the card's right edge (painted above card, per design draw order) -->
+    <img class="fa-illustration" src="assets/illustration.png" alt="">
+
+  </main>
+
+  <script src="js/states.js"></script>
+</body>
+</html>

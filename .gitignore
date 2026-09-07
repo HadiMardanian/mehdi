@@ -1,0 +1,6 @@
+# .gitignore
+
+# Dev-pipeline agent tooling (handoffs + session cache)
+agent-prompts/
+docs/dev-pipeline/SESSION-CACHE.md
+.agents/

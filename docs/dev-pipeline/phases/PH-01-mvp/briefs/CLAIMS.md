@@ -1,0 +1,15 @@
+# Claim ledger — PH-01
+
+| Claim ID | Summary | Kind | Status | First brief | Links |
+|----------|---------|------|--------|-------------|-------|
+| CLM-001 | MVP = web Sign-Up + Sign-In pages per the referenced Figma design | capability | absorbed | BRIEF-001 | `docs/epics/EPIC-AUTH.md` |
+| CLM-002 | Implement exactly per Figma; design incl. active/inactive states is the authoritative spec | constraint | absorbed | BRIEF-001 | `docs/business-rules/RULES.md` R1, `docs/epics/EPIC-AUTH.md` |
+| CLM-003 | Stack = plain HTML/CSS/JS (no framework) | constraint | absorbed | BRIEF-001 | `docs/business-rules/RULES.md` R3 |
+| CLM-004 | Pages exist in English and Persian (FA) variants | capability | absorbed | BRIEF-001 | `docs/business-rules/RULES.md` R2, `docs/epics/EPIC-AUTH.md` |
+| CLM-005 | Reference = `docs/figma/` exports; numbered 1–4 internals + exact design details Unknown | other | superseded | BRIEF-001 | superseded by CLM-006/CLM-007 (BRIEF-002) |
+| CLM-006 | Frame map (Observed via Figma API): frames `Sign Up 1–4` = EN Sign-Up, FA Sign-Up, EN Sign-In, FA Sign-In; same set on pages (Inactive) and (Active) | other | absorbed | BRIEF-002 | `docs/figma/Sign In (EN).png` … `Sign In (FA) Active.png`, RULES R1 |
+| CLM-007 | "Active/Inactive" = two page sets + per-field states Default/Hover/Active (password eye/eye-slash, cursor in Active); gallery frames `Sign Up (EN)/(FA).png` | capability | absorbed | BRIEF-002 | `docs/figma/Sign Up (EN).png`, `docs/figma/Sign Up (FA).png`, RULES R1 |
+| CLM-008 | css-review (2026-09-07): pre-rework CSS row-drift bug — 35px fields + `margin-top:65px` → rows 100px apart, password overlaps CTA (FA mirrored); proposed 30px fix | other | resolved/superseded | BRIEF-003 | superseded by Active-look rework (53px boxed fields, 25px margin, rows 294/372/450; measured EN 1.30% / FA 1.13%, no overlap) |
+| CLM-009 | Observed details: corner radii card 36px / SSO+CTA 8px; chevron ≈87px vs code 93px (6px cosmetic drift, fix pending); typed-text color `#383535` Inferred; body min-width 1152 = fixed-artboard constraint | other | absorbed | BRIEF-003 | `docs/figma/css-review.md`, RULES R1 |
+| CLM-010 | Font identities Observed: EN = PP Telegraf 400/800 (+ Source Serif Pro 600/700 for floating labels); FA text = Noto Naskh Arabic 400. Implementation uses OFL substitutes (Urbanist/Vazirmatn) — accepted path unless exact fonts required | capability | absorbed | BRIEF-003 | `docs/figma/design-build-steps.md`, RULES R4/Unknowns |
+| CLM-011 | Field-state specifics (Observed, gallery + components): Default `#9d9d9d` 16px inline label + 1px `#e5e5e5` underline; Hover label `#515151`; Active floats label 12px/700 `#426bff` + partial `#426bff` underline stretch + blinking cursor; password eye↔eye-slash `#c5c5c5` 22×18 — refines CLM-007 | capability | absorbed | BRIEF-003 | `docs/figma/design-build-steps.md`, RULES R4 (feeds AUTH-01-03 / AUTH-02-03) |

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In · project1</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-signin">
+  <!-- TASK-AUTH-02-01 · Sign-In page, English variant — Active look.
+       Target = user export docs/figma/Sign In (EN) Active.png.
+       Static page: field state behaviour belongs to TASK-AUTH-02-03. -->
+  <main class="stage" aria-label="Sign in">
+
+    <!-- Left brand panel (teal) -->
+    <img class="logo" src="assets/logo.png" alt="" width="48" height="48">
+    <p class="tagline">Find 3D Objects,<br>Mckups and Illustration here.</p>
+
+    <!-- Right card -->
+    <section class="card" aria-label="Sign in form">
+
+      <div class="lang">
+        <span class="lang-text">English (UK)</span>
+        <img class="lang-chevron" src="assets/chevron.png" alt="" width="8" height="4">
+      </div>
+
+      <h1 class="heading">Sign In</h1>
+
+      <div class="sso-row">
+        <button type="button" class="sso sso-google">
+          <img class="sso-icon" src="assets/icon-google.png" alt="" width="22" height="22">
+          <span class="sso-label">Sign In With Google</span>
+        </button>
+        <button type="button" class="sso sso-facebook">
+          <img class="sso-icon" src="assets/icon-facebook.png" alt="" width="22" height="22">
+          <span class="sso-label">Sign In With Facebook</span>
+        </button>
+      </div>
+
+      <p class="or" aria-hidden="true">- OR -</p>
+
+      <form class="signin-form" novalidate>
+
+        <div class="field" data-field>
+          <img class="field-icon icon-mail" src="assets/chip-mail.png" alt="" aria-hidden="true">
+          <label class="field-label" for="email">Email Address</label>
+          <input class="field-input" id="email" type="email" name="email" autocomplete="email" inputmode="email">
+          <span class="field-caret" aria-hidden="true"></span>
+        </div>
+
+        <div class="field" data-field>
+          <img class="field-icon icon-key" src="assets/chip-key.png" alt="" aria-hidden="true">
+          <label class="field-label" for="password">Password</label>
+          <input class="field-input" id="password" type="password" name="password" autocomplete="current-password">
+          <span class="field-icon eye" aria-hidden="true"></span>
+          <span class="field-caret" aria-hidden="true"></span>
+        </div>
+
+        <button type="submit" class="cta">Sign in</button>
+
+        <p class="footer-link">No Account? <a href="index.html">Create One!</a></p>
+
+      </form>
+    </section>
+
+    <!-- Illustration — painted ABOVE the card's left edge per design draw order -->
+    <img class="illustration" src="assets/illustration.png" alt="">
+
+  </main>
+</body>
+</html>
