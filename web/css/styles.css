@@ -44,19 +44,16 @@ body {
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-/* Artboard: 1152x700 scaled to fit the viewport (contain — never cropped),
-   centered via CSS translate; scale factor set by js/fit.js so the white
-   panel spans ~half the page at any window size (Figma look). At an exactly
-   1152x700 viewport the scale is 1 (1:1 render of the artboard). */
+/* Split layout: teal brand region 36.46vw (420/1152, floor 420px) + white panel
+   bleeding to the frame edge — Figma look at any window size, no bars/no crop.
+   At exactly 1152x700 this equals the artboard geometry (1:1). */
 .stage {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1152px;
-  height: 700px;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   background: var(--canvas-bg);
-  transform: translate(-50%, -50%) scale(1);
   box-sizing: border-box;
 }
 
@@ -82,11 +79,14 @@ body {
   pointer-events: none;
 }
 
-/* Right card — sits at canvas x=420, extends past the right edge (clipped) */
+/* Right card — white panel: teal brand region is 36.46vw (420/1152, floor 420px),
+   the panel fills the rest of the viewport to the right frame edge, full height.
+   Rounded on the left where it meets the teal side (design); right edge bleeds
+   past the frame. At exactly 1152x700 this equals the artboard geometry (420..1152). */
 .card {
   position: absolute;
-  left: 420px; top: 0;
-  width: 785px; height: 700px;
+  left: max(420px, 36.46vw); top: 0;
+  right: 0; bottom: 0;
   background: var(--card-bg);
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
 }
