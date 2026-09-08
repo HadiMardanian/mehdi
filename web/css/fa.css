@@ -34,11 +34,14 @@ body.fa-stage, .fa-stage {
   color: #ffffff;
 }
 
-/* Card on the left, its left edge off-canvas → rounded corners are on the right */
+/* Card on the left, its left edge off-canvas → rounded corners are on the right.
+   Fluid split: teal brand region is 36.46vw on the RIGHT (mirror of EN), the white
+   panel bleeds to the left frame edge, full height. Origin stays at -53 (card-local
+   coords use it), right edge = viewport - teal. At 1152x700 equals the artboard. */
 .fa-card {
   position: absolute;
   left: -53px; top: 0;
-  width: 785px; height: 700px;
+  right: max(420px, 36.46vw); bottom: 0;
   background: var(--card-bg);
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
 }
