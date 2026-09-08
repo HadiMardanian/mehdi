@@ -34,7 +34,9 @@
 body {
   font-family: var(--font);
   background: var(--canvas-bg);
-  min-width: 1152px;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }
 
 .sr-only {
@@ -42,14 +44,19 @@ body {
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-/* Artboard: 1152x700, clips the card's right edge like the canvas */
+/* Artboard: 1152x700 presented full-bleed like the Figma reference —
+   cover-fill the viewport via --fit set by js/fit.js (scale >= 1). At an
+   exactly 1152x700 viewport --fit = 1, i.e. a 1:1 render of the artboard. */
 .stage {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 1152px;
   height: 700px;
   overflow: hidden;
-  margin: 0 auto;
   background: var(--canvas-bg);
+  transform: translate(-50%, -50%) scale(var(--fit, 1));
+  box-sizing: border-box;
 }
 
 /* Left brand panel */
@@ -107,11 +114,11 @@ body {
   color: var(--heading);
 }
 
-/* Social sign-up buttons (Active look: row at card y 164) */
+/* Social sign-up buttons (revised active look: row at card y 170, BRIEF-005/CLM-013) */
 .sso {
   position: absolute;
-  top: 164px;
-  width: 188px; height: 45px;
+  top: 170px;
+  width: 188px; height: 44px;
   background: transparent;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -120,7 +127,7 @@ body {
 }
 .sso-google { left: 170px; }
 .sso-facebook { left: 409px; }
-.sso-icon { position: absolute; top: 12px; width: 22px; height: 22px; }
+.sso-icon { position: absolute; top: 11px; width: 22px; height: 22px; }
 .sso-google .sso-icon { left: 18px; }
 .sso-facebook .sso-icon { left: 14px; }
 .sso-label {
@@ -136,40 +143,38 @@ body {
 /* Separator */
 .or {
   position: absolute;
-  left: 170px; top: 234px;
+  left: 170px; top: 244px;
   width: 427px; height: 35px;
   display: flex; align-items: center; justify-content: center;
   font-size: 18px; font-weight: 400;
   color: var(--muted-2);
 }
 
-/* Form column — Active look: bordered (rounded-cap) field boxes. Form top = card y 294.
-   Field boxes: Full Name y294, Email y372, Password y450 (78px apart, 53px tall). */
-.signup-form { position: absolute; left: 170px; top: 294px; width: 427px; }
+/* Form column — revised active look (BRIEF-005/CLM-013): the rounded-cap box chrome
+   is replaced by a single underline per row. Observed from docs/figma/active/Sign Up 1.svg:
+   icon rows y 316/381/446 (65px pitch), underline at y ~343.5/408.5/473.5. */
+.signup-form { position: absolute; left: 170px; top: 316px; width: 427px; }
 
 .field {
   position: relative;
   display: block;
-  width: 427px; height: 53px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  border-radius: 26px; /* rounded end caps only (sides stay open, per design) */
+  width: 427px; height: 28px;
+  border-bottom: 1px solid var(--line); /* single underline (box removed) */
   transition: border-color .18s ease;
 }
-.field + .field { margin-top: 25px; } /* 53 + 25 = 78px between rows */
+.field + .field { margin-top: 37px; } /* 28 + 37 = 65px between rows */
 
-/* Field states (TASK-AUTH-01-03) — Observed from the state galleries
-   (docs/figma/Sign Up (EN).png): Hover = full box chrome #515151;
-   Active = full box chrome #426bff (rounded caps; sides close). */
-.field:hover { border: 1px solid #515151; }
-.field.active { border: 1px solid #426bff; }
+/* Field states (TASK-AUTH-01-03) — re-aimed to the underline chrome: hover #515151,
+   active #426bff (underline-color change; floating label stays in .field-label). */
+.field:hover { border-bottom-color: #515151; }
+.field.active { border-bottom-color: #426bff; }
 
 /* Real floating label (replaces the old placeholder) — Default sits at the input's
    text window as 16px/400 #9d9d9d; Active / has-value floats 12px/700 #426bff
-   to just above the box top border. */
+   up above the field underline. */
 .field-label {
   position: absolute;
-  left: 47px; top: 16px;
+  left: 38px; top: -1px;
   right: 34px; height: 22px;
   line-height: 22px;
   font-size: 16px; font-weight: 400;
@@ -191,8 +196,8 @@ body {
 .field-caret {
   display: none;
   position: absolute;
-  left: 47px; top: 13px;
-  width: 1px; height: 28px;
+  left: 38px; top: -1px;
+  width: 1px; height: 22px;
   background: #000000;
   pointer-events: none;
   animation: caret-blink 1.06s step-end infinite;
@@ -202,17 +207,17 @@ body {
 .field.active:not(.has-value) .field-input { caret-color: transparent; }
 
 .field-icon { position: absolute; display: block; }
-.icon-account { left: 15px; top: 15px; width: 22px; height: 22px; }
-.icon-mail    { left: 15px; top: 16px; width: 22px; height: 22px; }
-.icon-key     { left: 15px; top: 16px; width: 22px; height: 22px; }
+.icon-account { left: 5px; top: 0; width: 22px; height: 22px; }
+.icon-mail    { left: 5px; top: 0; width: 22px; height: 22px; }
+.icon-key     { left: 5px; top: 0; width: 22px; height: 22px; }
 
 /* Eye toggle (button) — masked state by default (eye-slash); ''eye-open'' swaps the
    sprite and JS switches input.type password ↔ text. */
 .eye {
-  left: 374px; top: 18px;
-  width: 32px; height: 18px;
+  right: 5px; top: 2px;
+  width: 22px; height: 18px;
   border: 0; padding: 0;
-  background: transparent url("../assets/icon-eye-slash.png") center / 32px 18px no-repeat;
+  background: transparent url("../assets/icon-eye-slash.png") center / 22px 18px no-repeat;
   cursor: pointer;
 }
 .eye.eye-open { background-image: url("../assets/icon-eye.png"); }
@@ -220,8 +225,8 @@ body {
 
 .field-input {
   position: absolute;
-  left: 47px; top: 16px;
-  width: auto; right: 34px;
+  left: 38px; top: -1px;
+  width: auto; right: 27px;
   height: 22px;
   border: 0; outline: none;
   background: transparent;
@@ -233,11 +238,11 @@ body {
 .field-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .field:not(:has(.eye)) .field-input { right: 0; }
 
-/* Primary CTA — form-local (card y 528) */
+/* Primary CTA — form-local (card y 504) */
 .cta {
   position: absolute;
-  left: 0; top: 234px; /* card y 528 */
-  width: 427px; height: 45px;
+  left: 0; top: 188px; /* card y 504 */
+  width: 427px; height: 44px;
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-sm);
   background: var(--accent);
@@ -247,29 +252,28 @@ body {
   cursor: pointer;
 }
 
-/* Footer link to sign-in — form-local (card y 598, x 180) */
+/* Footer link to sign-in — form-local (card y 580) */
 .footer-link {
   position: absolute;
-  left: 10px; top: 304px;
+  left: 10px; top: 264px;
   height: 35px;
   display: flex; align-items: center;
   font-size: 16px; font-weight: 400;
   color: var(--muted);
   white-space: nowrap;
 }
-.footer-link a { color: var(--muted); text-decoration: none; }
+.footer-link a { color: var(--accent); text-decoration: none; }
 .footer-link a:hover { color: var(--heading); }
 
-/* TASK-AUTH-02-01 · EN Sign-In layout overrides
-   Target = user export docs/figma/Sign In (EN) Active.png.
-   Same shell as the sign-up page; only the column positions change:
-   SSO row y174, OR y254, form top y324, CTA y500, footer y580 (card-local). */
-.page-signin .sso { top: 174px; }
-.page-signin .or { top: 254px; }
-.page-signin .signin-form { position: absolute; left: 170px; top: 324px; width: 427px; }
-.page-signin .signin-form .field { border-color: #cfcfcf; }
-.page-signin .signin-form .field + .field { margin-top: 35px; } /* rows 88px apart */
-.page-signin .signin-form .cta { top: 176px; }
-.page-signin .signin-form .footer-link { top: 256px; }
+/* TASK-AUTH-03-01 · EN Sign-In layout overrides
+   Target = docs/figma/active/Sign Up 3.svg (revised Active look, Observed):
+   SSO row y180, OR y264, form top y346, fields 346/421 (75px pitch, single
+   underline at y ~373.5/448.5), CTA y489, footer y564 (card-local). */
+.page-signin .sso { top: 180px; }
+.page-signin .or { top: 264px; }
+.page-signin .signin-form { position: absolute; left: 170px; top: 346px; width: 427px; }
+.page-signin .signin-form .field + .field { margin-top: 47px; } /* rows 75px apart */
+.page-signin .signin-form .cta { top: 143px; } /* card y 489 */
+.page-signin .signin-form .footer-link { top: 218px; } /* card y 564 */
 .page-signin .footer-link a { color: var(--accent); }
 .page-signin .footer-link a:hover { color: var(--heading); }
