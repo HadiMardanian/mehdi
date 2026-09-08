@@ -1,0 +1,32 @@
+# Fallback deploy: push the /web folder to a gh-pages branch.
+# This does not depend on the GitHub-managed Pages environment, so it
+# works even before GitHub Pages is enabled in the repository settings.
+
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.4.0
+
+      - name: Deploy /web to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web
+          publish_branch: gh-pages
+          keep_files: false
