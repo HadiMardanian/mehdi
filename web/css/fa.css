@@ -207,10 +207,15 @@ body.fa-stage, .fa-stage {
    Mirrors the EN sign-in y-shift (SSO y180, OR y264, form y346, fields 346/421 75px pitch,
    CTA y489, footer y564) but scoped to the FA sign-in page so it does not touch sign-up. */
 .fa-stage-signin .fa-heading {
-  left: 475px; /* card-local for stage x 422; right edge flush at stage 562 */
+  left: 473px; /* card-local for stage x 420; right edge flush at stage 560 (Observed ref4) */
   width: 140px;
 }
 .fa-stage-signin .fa-sso { top: 180px; }
+/* SSO icons — Sign Up 4.svg sits them 6-9px further left than Sign Up 2.svg (Observed),
+   and 1px higher than the base row (border-box offset). */
+.fa-stage-signin .fa-sso-icon { top: 10px; }
+.fa-stage-signin .fa-sso-facebook .fa-sso-icon { left: 141px; }
+.fa-stage-signin .fa-sso-google   .fa-sso-icon { left: 133px; }
 .fa-stage-signin .fa-or { top: 264px; }
 .fa-stage-signin .fa-form { position: absolute; left: 188px; top: 346px; width: 427px; }
 .fa-stage-signin .fa-field + .fa-field { margin-top: 47px; } /* rows 75px apart: Email y346 → Password y421 */
