@@ -225,10 +225,14 @@ body.fa-stage, .fa-stage {
 .fa-stage-signin .fa-form .fa-cta { top: 143px; } /* form-local: card y 489 */
 .fa-stage-signin .fa-form .fa-footer { top: 218px; } /* form-local: card y 564 */
 
-/* Left illustration overlaps the card's right edge (design paints it above the card) */
+/* Illustration overlaps the card's right edge (design paints it above the card).
+   98px of it sits on the card; the rest extends 395px past the right edge into the
+   brand panel. Anchored to the card's right edge so it stays on the boundary at any
+   window width (card right edge is fluid via `right: max(420px, 36.46vw)`). */
 .fa-illustration {
   position: absolute;
-  left: 634px; top: 181px;
+  right: -395px; /* card-local: image spans stage 634..1127 at 1152 (card right edge 732) */
+  top: 181px;
   width: 493px; height: 542px;
   pointer-events: none;
   transform: scaleX(-1); /* the FA mirror flips the artwork — verified 0.04% zone diff vs frame render */
