@@ -45,8 +45,7 @@ body {
 }
 
 /* Artboard: 1152x700 presented full-bleed like the Figma reference —
-   cover-fill the viewport via --fit set by js/fit.js (scale >= 1). At an
-   exactly 1152x700 viewport --fit = 1, i.e. a 1:1 render of the artboard. */
+   exactly centered, no scaling (user decision: exact 1152x700, no fit.js). */
 .stage {
   position: absolute;
   left: 50%;
@@ -55,7 +54,7 @@ body {
   height: 700px;
   overflow: hidden;
   background: var(--canvas-bg);
-  transform: translate(-50%, -50%) scale(var(--fit, 1));
+  transform: translate(-50%, -50%);
   box-sizing: border-box;
 }
 
@@ -127,9 +126,9 @@ body {
 }
 .sso-google { left: 170px; }
 .sso-facebook { left: 409px; }
-.sso-icon { position: absolute; top: 11px; width: 22px; height: 22px; }
-.sso-google .sso-icon { left: 18px; }
-.sso-facebook .sso-icon { left: 14px; }
+.sso-icon { position: absolute; top: 10px; width: 22px; height: 22px; }
+.sso-google .sso-icon { left: 17px; }
+.sso-facebook .sso-icon { left: 13px; }
 .sso-label {
   position: absolute; top: 0; bottom: 0;
   display: flex; align-items: center;
@@ -186,7 +185,7 @@ body {
 }
 .field.active .field-label,
 .field.has-value .field-label {
-  top: -8px; height: 12px; line-height: 12px;
+  top: -16px; height: 12px; line-height: 12px; /* floats above the text row (28px underline field) */
   font-size: 12px; font-weight: 700;
   color: #426bff;
 }

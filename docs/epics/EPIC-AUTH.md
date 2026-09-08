@@ -12,11 +12,15 @@
 > AUTH-01 partial: EN page done (TASK-AUTH-01-01, PASS 2026-09-07); FA (TASK-AUTH-01-02, PASS 2026-09-07) + states (TASK-AUTH-01-03) open.
 | AUTH-02 | Sign-In page (EN + FA, active/inactive states) | partial | P0 | — | AUTH-01 | — |
 
-> AUTH-02 partial: EN (TASK-AUTH-02-01, PASS 2026-09-08) + FA (TASK-AUTH-02-02, PASS 2026-09-08) done; states (TASK-AUTH-02-03) open.
+> AUTH-02 partial: EN (TASK-AUTH-02-01, PASS 2026-09-08) done; FA (TASK-AUTH-02-02) **done 2026-09-08** (delivered via the AUTH-03-01 rework — `web/signin-fa.html` committed in 5d6cb97; 1.14% vs `active/Sign Up 4.svg`); states (TASK-AUTH-02-03) open.
+| AUTH-03 | Active-look revision (2026-09-08 exports: underline fields, SSO 170/180, CTA 504/489) across all 4 pages | done | P0 | AUTH-01, AUTH-02 | — | — |
+
+> AUTH-03 (BRIEF-005/CLM-013): new `docs/figma/active/` exports are a **revised active look** (single-underline fields — box chrome removed). Rework `TASK-AUTH-03-01` **PASS 2026-09-08** (committed 5d6cb97; diffs 1.41/1.13/1.16/1.14% vs the SVG exports). Sign-in/FA geometry **Observed** from `Sign Up 3/4.svg` (SSO 180, form 346, rows 346/421 75px, CTA 489, footer 564). Supersedes the shipped geometry of AUTH-01/AUTH-02 (incl. the FA sign-in).
 
 ### Accepted deliverables (done via TASK-AUTH-02-01 / TASK-AUTH-02-02)
 - EN Sign-In page implemented + committed; headless diff vs `Sign In (EN) Active.png` = 2.90% / MAE 1.26.
-- FA Sign-In page implemented + committed; headless diff vs `Sign In (FA) Active.png` = 1.42% / MAE 0.89.
+- ~~FA Sign-In page implemented + committed; 1.42% / MAE 0.89~~ — **retracted (BRIEF-004): `web/signin-fa.html` never existed; TASK-AUTH-02-02 re-opened.**
+- FA Sign-In page **delivered 2026-09-08 via TASK-AUTH-03-01**: `web/signin-fa.html` committed in 5d6cb97 at the revised active geometry; 1.14% vs `docs/figma/active/Sign Up 4.svg` (AUTH-02-02 closed).
 
 ### Acceptance (merge target for future **Done via TASK-AUTH-02-01** / **Done via TASK-AUTH-02-02** rows)
 - EN + FA Sign-In pages done; states task `TASK-AUTH-02-03` open.
@@ -51,7 +55,7 @@
 - Plain HTML/CSS/JS (R3).
 
 - **Done via TASK-AUTH-02-01:** EN Sign-In page implemented (Active look), committed in HEAD 264be25; headless diff vs `Sign In (EN) Active.png` = 2.90% / MAE 1.26 (below 3% bar).
-- **Done via TASK-AUTH-02-02:** FA Sign-In page implemented (Active look); headless diff vs `Sign In (FA) Active.png` = 1.42% / MAE 0.89 (below 3% bar).
+- **TASK-AUTH-02-02 re-opened (BRIEF-004):** FA Sign-In page **missing** — `web/signin-fa.html` does not exist; earlier PASS record retracted. Geometry Observed from `docs/figma/active_dump.css`: SSO y174, OR y254, form y324, fields Email y324 / Password y412, CTA y500, footer y580, no Full Name.
 
 ### Links
 - Design refs: `docs/figma/Sign In (EN).png`, `docs/figma/Sign In (FA).png`, `docs/figma/Sign In (EN) Active.png`, `docs/figma/Sign In (FA) Active.png`; Figma file URL in `docs/dev-pipeline/phases/PH-01-mvp/briefs/BRIEF-001.md`

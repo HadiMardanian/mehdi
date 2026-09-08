@@ -131,11 +131,11 @@ body.fa-stage, .fa-stage {
 }
 .fa-field.active .field-label,
 .fa-field.has-value .field-label {
-  top: -8px; height: 12px; line-height: 12px;
+  top: -16px; height: 12px; line-height: 12px; /* floats above the text row (28px underline field) */
   font-size: 12px; font-weight: 700;
   color: #426bff;
   text-align: right;
-  padding-right: 37px;
+  padding-right: 38px;
 }
 
 /* FA caret — mirrored to the right (text start is at the right edge) */
@@ -166,7 +166,7 @@ body.fa-stage, .fa-stage {
    from styles.css; this rule overrides its position and resets the button. */
 .fa-eye {
   position: absolute;
-  left: 5px; top: 2px;
+  left: 5px; right: auto; top: 2px; /* right:auto — RTL would ignore left when both are set */
   width: 22px; height: 18px;
   border: 0; padding: 0;
   background-color: transparent;
