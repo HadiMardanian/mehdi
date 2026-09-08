@@ -209,6 +209,9 @@ body.fa-stage, .fa-stage {
 .fa-stage-signin .fa-heading {
   left: 473px; /* card-local for stage x 420; right edge flush at stage 560 (Observed ref4) */
   width: 140px;
+  top: 102px;   /* text top 111 in ref4 vs 113 with 104 (Observed) */
+  transform-origin: right;
+  transform: scaleX(1.079); /* stretch Vazirmatn 127px -> ref 137px, right-anchored (Observed) */
 }
 .fa-stage-signin .fa-sso { top: 180px; }
 /* SSO icons — Sign Up 4.svg sits them 6-9px further left than Sign Up 2.svg (Observed),
